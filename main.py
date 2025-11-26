@@ -13,7 +13,9 @@ Usage:
     python main.py --load-claude claude_responses.json
 """
 
+
 import sys
+from dotenv import load_dotenv
 import os
 import json
 import csv
@@ -22,6 +24,9 @@ import random
 from datetime import datetime
 from dataclasses import dataclass, asdict
 from typing import List, Dict, Any, Optional
+
+load_dotenv()
+
 
 # Add parent directory to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

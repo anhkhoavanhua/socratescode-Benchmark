@@ -43,23 +43,22 @@ class BaseAIClient(ABC):
         pass
 
 class GeminiClient(BaseAIClient):
-    """Google Gemini API Client"""
-    
+    """Google Gemini API Client (using new google-genai SDK)"""
+
     def __init__(self, api_key: str = None, model: str = None):
         self.api_key = api_key or config.GEMINI_API_KEY
         self.model = model or config.GEMINI_MODEL
         self._client = None
-    
+
     def _init_client(self):
         """Initialize Gemini client lazily"""
         if self._client is None:
             try:
-                import google.generativeai as genai
-                genai.configure(api_key=self.api_key)
-                self._client = genai.GenerativeModel(self.model)
+                from google import genai
+                self._client = genai.Client(api_key=self.api_key)
             except ImportError:
-                raise ImportError("Install google-generativeai: pip install google-generativeai")
-    
+                raise ImportError("Install google-genai: pip install google-genai")
+
     def generate(self, prompt: str, **kwargs) -> AIResponse:
         """Generate response from Gemini"""
         if not self.api_key:
@@ -70,20 +69,28 @@ class GeminiClient(BaseAIClient):
                 latency_ms=0,
                 error="GEMINI_API_KEY not set"
             )
-        
+
         try:
             self._init_client()
-            
+
             start = time.perf_counter()
-            response = self._client.generate_content(prompt)
+            response = self._client.models.generate_content(
+                model=self.model,
+                contents=prompt
+            )
             latency = (time.perf_counter() - start) * 1000
-            
+
+            # Extract token usage from new SDK format
+            tokens_used = 0
+            if hasattr(response, 'usage_metadata') and response.usage_metadata:
+                tokens_used = getattr(response.usage_metadata, 'total_token_count', 0)
+
             return AIResponse(
                 model=self.model,
                 response=response.text,
                 prompt=prompt,
                 latency_ms=latency,
-                tokens_used=getattr(response, 'usage_metadata', {}).get('total_token_count', 0)
+                tokens_used=tokens_used
             )
         except Exception as e:
             return AIResponse(
@@ -93,7 +100,7 @@ class GeminiClient(BaseAIClient):
                 latency_ms=0,
                 error=str(e)
             )
-    
+
     def get_model_name(self) -> str:
         return f"gemini:{self.model}"
 

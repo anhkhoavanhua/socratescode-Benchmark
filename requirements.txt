@@ -1,8 +1,8 @@
 # SocratesCode AI Evaluator Dependencies
 
 # API clients (optional - only needed for API evaluation)
-google-generativeai>=0.3.0
-openai>=1.0.0
+google-genai>=1.0.0  # New unified Google GenAI SDK (replaces deprecated google-generativeai)
+openai>=2.0.0
 
 # Core dependencies (minimal - for local evaluation)
 # No external dependencies required for basic functionality!

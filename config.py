@@ -19,7 +19,7 @@ class Config:
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
     
     # Models
-    GEMINI_MODEL: str = "gemini-1.5-pro"
+    GEMINI_MODEL: str = "gemini-2.0-flash"  # Updated to current model
     GPT_MODEL: str = "gpt-4o-mini"
     
     # Execution limits (from BigCodeBench methodology)
