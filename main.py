@@ -189,8 +189,8 @@ Include necessary imports if needed.
             space_complexity=efficiency_result.estimated_space_complexity,
             overall_score=overall_score,
             needs_human_validation=needs_human_validation,
-            ai_response=ai_response[:1000],  # Truncate for storage
-            extracted_code=code[:500] if code else "",
+            ai_response=ai_response[:5000],  # Truncate for storage
+            extracted_code=code[:5000] if code else "",
             api_latency_ms=api_latency
         )
         

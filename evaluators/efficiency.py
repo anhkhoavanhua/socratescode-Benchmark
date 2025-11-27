@@ -85,10 +85,54 @@ import gc
 
 {code}
 
+# Helpers for Linked List
+if 'ListNode' not in globals():
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+
+def list_to_ll(items):
+    if not items: return None
+    dummy = ListNode(0)
+    curr = dummy
+    for i in items:
+        curr.next = ListNode(i)
+        curr = curr.next
+    return dummy.next
+
 if __name__ == "__main__":
     test_input = json.loads(sys.argv[1]) if len(sys.argv) > 1 else None
     num_runs = int(sys.argv[2]) if len(sys.argv) > 2 else 5
     
+    candidates = [{repr(func_name) if func_name else "'solution'"}, 'solve', 'main', 'twoSum', 'threeSum', 'maxProfit', 'isValid', 'mergeTwoLists', 'longestPalindrome']
+    
+    func = None
+    func_name = None
+    
+    # 1. Check top-level
+    for fname in candidates:
+        if fname in dir():
+            f = eval(fname)
+            if callable(f):
+                func = f
+                func_name = fname
+                break
+    
+    # 2. Check Solution class
+    if func is None and 'Solution' in dir():
+        try:
+            sol = Solution()
+            for fname in candidates:
+                if hasattr(sol, fname):
+                    f = getattr(sol, fname)
+                    if callable(f):
+                        func = f
+                        func_name = fname
+                        break
+        except:
+            pass
+
     runtimes = []
     for _ in range(num_runs):
         gc.collect()  # Clean up before each run
@@ -97,17 +141,16 @@ if __name__ == "__main__":
             start = time.perf_counter()
             
             result = None
-            for fname in [{repr(func_name) if func_name else "'solution'"}, 'solve', 'main', 'twoSum']:
-                if fname in dir():
-                    func = eval(fname)
-                    if callable(func):
-                        if isinstance(test_input, list):
-                            result = func(*test_input)
-                        elif isinstance(test_input, dict):
-                            result = func(**test_input)
-                        else:
-                            result = func(test_input) if test_input is not None else func()
-                        break
+            if func:
+                if func_name == 'mergeTwoLists' and isinstance(test_input, list):
+                     args = [list_to_ll(arg) for arg in test_input]
+                     result = func(*args)
+                elif isinstance(test_input, list):
+                    result = func(*test_input)
+                elif isinstance(test_input, dict):
+                    result = func(**test_input)
+                else:
+                    result = func(test_input) if test_input is not None else func()
             
             elapsed = (time.perf_counter() - start) * 1000
             runtimes.append(elapsed)
@@ -161,23 +204,66 @@ import tracemalloc
 
 {code}
 
+# Helpers for Linked List
+if 'ListNode' not in globals():
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+
+def list_to_ll(items):
+    if not items: return None
+    dummy = ListNode(0)
+    curr = dummy
+    for i in items:
+        curr.next = ListNode(i)
+        curr = curr.next
+    return dummy.next
+
 if __name__ == "__main__":
     test_input = json.loads(sys.argv[1]) if len(sys.argv) > 1 else None
     
     tracemalloc.start()
     
     try:
-        for fname in [{repr(func_name) if func_name else "'solution'"}, 'solve', 'main', 'twoSum']:
+        candidates = [{repr(func_name) if func_name else "'solution'"}, 'solve', 'main', 'twoSum', 'threeSum', 'maxProfit', 'isValid', 'mergeTwoLists', 'longestPalindrome']
+        
+        func = None
+        func_name = None
+        
+        # 1. Check top-level
+        for fname in candidates:
             if fname in dir():
-                func = eval(fname)
-                if callable(func):
-                    if isinstance(test_input, list):
-                        result = func(*test_input)
-                    elif isinstance(test_input, dict):
-                        result = func(**test_input)
-                    else:
-                        result = func(test_input) if test_input is not None else func()
+                f = eval(fname)
+                if callable(f):
+                    func = f
+                    func_name = fname
                     break
+        
+        # 2. Check Solution class
+        if func is None and 'Solution' in dir():
+            try:
+                sol = Solution()
+                for fname in candidates:
+                    if hasattr(sol, fname):
+                        f = getattr(sol, fname)
+                        if callable(f):
+                            func = f
+                            func_name = fname
+                            break
+            except:
+                pass
+
+        if func:
+            if func_name == 'mergeTwoLists' and isinstance(test_input, list):
+                 args = [list_to_ll(arg) for arg in test_input]
+                 result = func(*args)
+            elif isinstance(test_input, list):
+                result = func(*test_input)
+            elif isinstance(test_input, dict):
+                result = func(**test_input)
+            else:
+                result = func(test_input) if test_input is not None else func()
         
         current, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()

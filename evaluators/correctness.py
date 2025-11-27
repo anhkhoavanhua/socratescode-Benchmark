@@ -50,11 +50,12 @@ class CodeExtractor:
     @staticmethod
     def extract(response: str) -> str:
         """Extract Python code from AI response"""
-        # Pattern 1: ```python ... ```
+        # Pattern 1: ```python ... ``` (Strict, closed blocks)
+        # Use multiline regex to ensure closing backticks are at the start of a line (ignoring indented ones)
         patterns = [
-            r'```python\n(.*?)```',
-            r'```py\n(.*?)```',
-            r'```\n(.*?)```',
+            r'(?ms)```python\r?\n(.*?)^```',
+            r'(?ms)```py\r?\n(.*?)^```',
+            r'(?ms)```\r?\n(.*?)^```',
         ]
         
         for pattern in patterns:
@@ -63,7 +64,19 @@ class CodeExtractor:
                 # Return longest code block
                 return max(matches, key=len).strip()
         
-        # Pattern 2: Look for code-like content
+        # Pattern 2: Unclosed blocks (try to find start of block until end)
+        unclosed_patterns = [
+             r'```python\r?\n(.*)',
+             r'```py\r?\n(.*)',
+             r'```\r?\n(.*)',
+        ]
+        
+        for pattern in unclosed_patterns:
+            match = re.search(pattern, response, re.DOTALL)
+            if match:
+                return match.group(1).strip()
+        
+        # Pattern 3: Look for code-like content (Fallback)
         lines = response.split('\n')
         code_lines = []
         in_code = False
@@ -118,26 +131,79 @@ import time
 # User code
 {code}
 
+# Helpers for Linked List
+if 'ListNode' not in globals():
+    class ListNode:
+        def __init__(self, val=0, next=None):
+            self.val = val
+            self.next = next
+
+def list_to_ll(items):
+    if not items: return None
+    dummy = ListNode(0)
+    curr = dummy
+    for i in items:
+        curr.next = ListNode(i)
+        curr = curr.next
+    return dummy.next
+
+def ll_to_list(node):
+    res = []
+    while node:
+        res.append(node.val)
+        node = node.next
+    return res
+
 if __name__ == "__main__":
     try:
         test_input = json.loads(sys.argv[1]) if len(sys.argv) > 1 else None
         start = time.perf_counter()
         
-        # Try common function names
-        result = None
-        for fname in [{repr(func_name) if func_name else "'solution'"}, 'solve', 'main', 'twoSum', 'threeSum', 'maxProfit', 'isValid', 'mergeTwoLists', 'longestPalindrome']:
+        candidates = [{repr(func_name) if func_name else "'solution'"}, 'solve', 'main', 'twoSum', 'threeSum', 'maxProfit', 'isValid', 'mergeTwoLists', 'longestPalindrome']
+        
+        func = None
+        func_name = None
+        
+        # 1. Check top-level functions
+        for fname in candidates:
             if fname in dir():
-                func = eval(fname)
-                if callable(func):
-                    # Handle different input types
-                    if isinstance(test_input, list) and len(test_input) > 0:
-                        # Check if it looks like multiple arguments
-                        result = func(*test_input)
-                    elif test_input is not None:
-                        result = func(test_input)
-                    else:
-                        result = func()
+                f = eval(fname)
+                if callable(f):
+                    func = f
+                    func_name = fname
                     break
+        
+        # 2. Check Solution class methods
+        if func is None and 'Solution' in dir():
+            try:
+                sol = Solution()
+                for fname in candidates:
+                    if hasattr(sol, fname):
+                        f = getattr(sol, fname)
+                        if callable(f):
+                            func = f
+                            func_name = fname
+                            break
+            except:
+                pass
+
+        result = None
+        if func:
+            # Handle different input types
+            if func_name == 'mergeTwoLists' and isinstance(test_input, list):
+                # Convert inputs to Linked Lists
+                args = [list_to_ll(arg) for arg in test_input]
+                # Call function
+                ll_result = func(*args)
+                # Convert output back to list
+                result = ll_to_list(ll_result)
+            elif isinstance(test_input, list) and len(test_input) > 0:
+                # Check if it looks like multiple arguments
+                result = func(*test_input)
+            elif test_input is not None:
+                result = func(test_input)
+            else:
+                result = func()
         
         elapsed = (time.perf_counter() - start) * 1000
         print(json.dumps({{"ok": True, "result": result, "time": elapsed}}))
@@ -184,6 +250,11 @@ if __name__ == "__main__":
         """Compare outputs with tolerance for floats"""
         if actual == expected:
             return True
+            
+        # Allow one of multiple valid answers (for strings)
+        if isinstance(actual, str) and isinstance(expected, list) and all(isinstance(x, str) for x in expected):
+            return actual in expected
+            
         if actual is None or expected is None:
             return False
         
@@ -335,7 +406,7 @@ LEETCODE_PROBLEMS = {
         "difficulty": "Medium",
         "description": "Given a string s, return the longest palindromic substring in s.",
         "test_cases": [
-            TestCase("babad", "bab", "Basic case"),  # or "aba"
+            TestCase("babad", ["bab", "aba"], "Basic case"),  # Accept either
             TestCase("cbbd", "bb", "Even length"),
             TestCase("a", "a", "Single char"),
         ],
