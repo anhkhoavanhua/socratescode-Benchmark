@@ -1,0 +1,10 @@
+# ORPS AI Reasoning Evaluation
+# Python 3.9+
+
+# API Clients
+openai>=1.0.0
+google-generativeai>=0.3.0
+
+# Optional: Analysis
+pandas>=2.0.0
+matplotlib>=3.7.0

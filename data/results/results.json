@@ -1,0 +1,504 @@
+{
+  "timestamp": "2025-12-04T23:26:27.211815",
+  "completed": 2,
+  "results": [
+    {
+      "problem_id": "two-sum",
+      "problem_title": "Two Sum",
+      "model_results": {
+        "gemini-2.5-flash-lite": {
+          "problem_id": "two-sum",
+          "model_name": "gemini-2.5-flash-lite",
+          "execution": {
+            "problem_id": "two-sum",
+            "model_name": "gemini-2.5-flash-lite",
+            "total_tests": 3,
+            "passed_tests": 3,
+            "pass_rate": 1.0,
+            "test_results": [
+              {
+                "test_id": 1,
+                "input": "[[2, 7, 11, 15], 9]",
+                "expected": "[0, 1]",
+                "actual": "[0, 1]",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 2,
+                "input": "[[3, 2, 4], 6]",
+                "expected": "[1, 2]",
+                "actual": "[1, 2]",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 3,
+                "input": "[[3, 3], 6]",
+                "expected": "[0, 1]",
+                "actual": "[0, 1]",
+                "passed": true,
+                "error": null
+              }
+            ],
+            "total_runtime_ms": 51.277875900268555,
+            "has_syntax_error": false,
+            "has_runtime_error": false
+          },
+          "algorithm_eval": {
+            "problem_id": "two-sum",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "optimality_score": 5,
+            "appropriateness_score": 5,
+            "justification_score": 4,
+            "overall_score": 4.7,
+            "feedback": "The AI correctly identifies the optimal approach (hash map) and explains its reasoning well, including the time complexity benefits. However, it fails to explicitly state the time and space complexity of its own algorithm, leaving those fields as 'Unknown'. The explanation for the time complexity is also cut off. Despite these minor omissions, the core understanding and explanation are excellent."
+          },
+          "reasoning_eval": {
+            "problem_id": "two-sum",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "step_evaluations": [
+              {
+                "step_number": 1,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None"
+              },
+              {
+                "step_number": 2,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None"
+              },
+              {
+                "step_number": 3,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The description of the algorithm in step 2 was cut off. Step 3 correctly picks up from where step 2 left off, but the full reasoning for why the hash map is chosen and how it's used is not fully present in step 2."
+              },
+              {
+                "step_number": 4,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None"
+              },
+              {
+                "step_number": 5,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The code snippet is incomplete, but the provided part is correct and aligns with the strategy."
+              },
+              {
+                "step_number": 6,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None"
+              }
+            ],
+            "avg_correctness": 5.0,
+            "avg_clarity": 5.0,
+            "avg_completeness": 5.0,
+            "avg_logical_flow": 5.0,
+            "overall_score": 5.0
+          },
+          "combined_score": 97.9
+        },
+        "gpt-4o-mini": {
+          "problem_id": "two-sum",
+          "model_name": "gpt-4o-mini",
+          "execution": {
+            "problem_id": "two-sum",
+            "model_name": "gpt-4o-mini",
+            "total_tests": 3,
+            "passed_tests": 3,
+            "pass_rate": 1.0,
+            "test_results": [
+              {
+                "test_id": 1,
+                "input": "[[2, 7, 11, 15], 9]",
+                "expected": "[0, 1]",
+                "actual": "[0, 1]",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 2,
+                "input": "[[3, 2, 4], 6]",
+                "expected": "[1, 2]",
+                "actual": "[1, 2]",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 3,
+                "input": "[[3, 3], 6]",
+                "expected": "[0, 1]",
+                "actual": "[0, 1]",
+                "passed": true,
+                "error": null
+              }
+            ],
+            "total_runtime_ms": 48.6905574798584,
+            "has_syntax_error": false,
+            "has_runtime_error": false
+          },
+          "algorithm_eval": {
+            "problem_id": "two-sum",
+            "model_name": "GPT-4o Mini",
+            "optimality_score": 5,
+            "appropriateness_score": 5,
+            "justification_score": 4,
+            "overall_score": 4.7,
+            "feedback": "The AI correctly identifies the optimal approach (hash map) and its time/space complexities. The explanation is clear and concise. However, the AI's description of its own algorithm is incomplete, stating 'Time: Unknown' and 'Space: Unknown' at the end, which contradicts the earlier correct analysis. The justification for why it's the best approach is good, but could be slightly more detailed by explicitly mentioning the O(1) lookup time of the hash map for the complement."
+          },
+          "reasoning_eval": {
+            "problem_id": "two-sum",
+            "model_name": "GPT-4o Mini",
+            "step_evaluations": [
+              {
+                "step_number": 1,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The 'Constraints' section is incomplete. It mentions 'Each integer in nums can range from' but doesn't specify the range."
+              },
+              {
+                "step_number": 2,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The explanation for why the hash map is the best approach is cut off ('resultin'). It should fully explain the O(1) lookup time."
+              },
+              {
+                "step_number": 3,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The breakdown is incomplete. Step 4 ('If it exists, r') is cut off and should fully describe the return condition and what happens if the complement is not found (which is implicitly handled by continuing the loop and adding the current number to the map)."
+              },
+              {
+                "step_number": 4,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": null
+              },
+              {
+                "step_number": 5,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": null
+              },
+              {
+                "step_number": 6,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": null
+              }
+            ],
+            "avg_correctness": 5.0,
+            "avg_clarity": 5.0,
+            "avg_completeness": 4.67,
+            "avg_logical_flow": 5.0,
+            "overall_score": 4.8
+          },
+          "combined_score": 96.9
+        }
+      },
+      "best_overall": "gemini-2.5-flash-lite"
+    },
+    {
+      "problem_id": "valid-parentheses",
+      "problem_title": "Valid Parentheses",
+      "model_results": {
+        "gemini-2.5-flash-lite": {
+          "problem_id": "valid-parentheses",
+          "model_name": "gemini-2.5-flash-lite",
+          "execution": {
+            "problem_id": "valid-parentheses",
+            "model_name": "gemini-2.5-flash-lite",
+            "total_tests": 3,
+            "passed_tests": 3,
+            "pass_rate": 1.0,
+            "test_results": [
+              {
+                "test_id": 1,
+                "input": "[\"()\"]",
+                "expected": "True",
+                "actual": "True",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 2,
+                "input": "[\"()[]{}\"]",
+                "expected": "True",
+                "actual": "True",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 3,
+                "input": "[\"(]\"]",
+                "expected": "False",
+                "actual": "False",
+                "passed": true,
+                "error": null
+              }
+            ],
+            "total_runtime_ms": 51.55229568481445,
+            "has_syntax_error": false,
+            "has_runtime_error": false
+          },
+          "algorithm_eval": {
+            "problem_id": "valid-parentheses",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "optimality_score": 1,
+            "appropriateness_score": 1,
+            "justification_score": 3,
+            "overall_score": 2.3,
+            "feedback": "The AI correctly identifies the stack-based approach as appropriate and explains why it's suitable for this problem. However, it fails to determine the time and space complexity, which are crucial aspects of evaluating an algorithm's optimality. The explanation for why it's the 'best' approach is good, but the missing complexity analysis significantly impacts the optimality score."
+          },
+          "reasoning_eval": {
+            "problem_id": "valid-parentheses",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "step_evaluations": [
+              {
+                "step_number": 1,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None"
+              },
+              {
+                "step_number": 2,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The explanation for why a stack is the best approach is cut off mid-sentence. It should explain the LIFO property and how it directly applies to matching nested brackets."
+              },
+              {
+                "step_number": 3,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "This step is also cut off mid-sentence. It should detail the logic for handling opening brackets (push to stack) and closing brackets (check against top of stack, pop if match, else invalid)."
+              },
+              {
+                "step_number": 4,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "This step is cut off. It should also discuss other potential edge cases like a string with only opening brackets or only closing brackets, or a string with mismatched bracket types."
+              },
+              {
+                "step_number": 5,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The code implementation is incomplete, cut off mid-line. It should show the full logic for handling closing brackets (checking if stack is empty, comparing popped element with mapping, and returning False if mismatch or stack empty) and the final check after the loop (stack must be empty for validity)."
+              },
+              {
+                "step_number": 6,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The explanation for time complexity is cut off mid-sentence. It should also explain why space complexity is O(n) (in the worst case, the stack can hold all opening brackets)."
+              }
+            ],
+            "avg_correctness": 5.0,
+            "avg_clarity": 5.0,
+            "avg_completeness": 4.5,
+            "avg_logical_flow": 5.0,
+            "overall_score": 4.7
+          },
+          "combined_score": 79.6
+        },
+        "gpt-4o-mini": {
+          "problem_id": "valid-parentheses",
+          "model_name": "gpt-4o-mini",
+          "execution": {
+            "problem_id": "valid-parentheses",
+            "model_name": "gpt-4o-mini",
+            "total_tests": 3,
+            "passed_tests": 3,
+            "pass_rate": 1.0,
+            "test_results": [
+              {
+                "test_id": 1,
+                "input": "[\"()\"]",
+                "expected": "True",
+                "actual": "True",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 2,
+                "input": "[\"()[]{}\"]",
+                "expected": "True",
+                "actual": "True",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 3,
+                "input": "[\"(]\"]",
+                "expected": "False",
+                "actual": "False",
+                "passed": true,
+                "error": null
+              }
+            ],
+            "total_runtime_ms": 51.64647102355957,
+            "has_syntax_error": false,
+            "has_runtime_error": false
+          },
+          "algorithm_eval": {
+            "problem_id": "valid-parentheses",
+            "model_name": "GPT-4o Mini",
+            "optimality_score": 5,
+            "appropriateness_score": 5,
+            "justification_score": 3,
+            "overall_score": 4.3,
+            "feedback": "The AI correctly identifies the optimal approach (stack) and its time/space complexity. However, it fails to explicitly state the space complexity for its own algorithm, marking it as 'Unknown' when it should be O(n) based on the optimal solution description. The justification for why the stack is a good approach is present but could be slightly more detailed. The 'Why is this the best approach?' section is good, but the AI's own algorithm section is incomplete regarding space complexity."
+          },
+          "reasoning_eval": {
+            "problem_id": "valid-parentheses",
+            "model_name": "GPT-4o Mini",
+            "step_evaluations": [
+              {
+                "step_number": 1,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The constraint for the length of the string 's' is cut off in the description ('between 1 an'). This makes the completeness score less than perfect."
+              },
+              {
+                "step_number": 2,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The explanation for why the stack is the best approach is cut off ('Last In First Out')."
+              },
+              {
+                "step_number": 3,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The description of the logical parts is cut off mid-sentence ('If it is a closing bracket')."
+              },
+              {
+                "step_number": 4,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None."
+              },
+              {
+                "step_number": 5,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The code implementation is cut off mid-line ('if char in')."
+              },
+              {
+                "step_number": 6,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The explanation for time complexity is cut off ('each character is')."
+              }
+            ],
+            "avg_correctness": 5.0,
+            "avg_clarity": 5.0,
+            "avg_completeness": 4.33,
+            "avg_logical_flow": 5.0,
+            "overall_score": 4.7
+          },
+          "combined_score": 93.6
+        }
+      },
+      "best_overall": "gpt-4o-mini"
+    }
+  ]
+}

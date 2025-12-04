@@ -1,0 +1,17 @@
+[project]
+name = "soccode-ai-evaluation"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "google-genai>=1.53.0",
+    "openai>=2.8.1",
+    "python-dotenv>=1.2.1",
+]
+
+[project.optional-dependencies]
+analysis = [
+    "matplotlib>=3.10.7",
+    "pandas>=2.3.3",
+]

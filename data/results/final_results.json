@@ -1,0 +1,85 @@
+{
+  "config": {
+    "test_models": [
+      "gemini-2.5-flash-lite",
+      "gpt-4o-mini"
+    ],
+    "judge_model": "gemini-flash",
+    "num_problems": 8,
+    "execution_weight": 0.4,
+    "algorithm_weight": 0.35,
+    "step_quality_weight": 0.25,
+    "code_timeout_seconds": 10,
+    "output_dir": "data/results",
+    "save_raw_responses": true
+  },
+  "timestamp": "2025-12-04T23:24:44.882711",
+  "results": [
+    {
+      "problem_id": "two-sum",
+      "problem_title": "Two Sum",
+      "model_results": {},
+      "best_overall": ""
+    },
+    {
+      "problem_id": "valid-parentheses",
+      "problem_title": "Valid Parentheses",
+      "model_results": {},
+      "best_overall": ""
+    },
+    {
+      "problem_id": "maximum-subarray",
+      "problem_title": "Maximum Subarray",
+      "model_results": {},
+      "best_overall": ""
+    },
+    {
+      "problem_id": "climbing-stairs",
+      "problem_title": "Climbing Stairs",
+      "model_results": {},
+      "best_overall": ""
+    },
+    {
+      "problem_id": "best-time-to-buy-and-sell-stock",
+      "problem_title": "Best Time to Buy and Sell Stock",
+      "model_results": {},
+      "best_overall": ""
+    },
+    {
+      "problem_id": "contains-duplicate",
+      "problem_title": "Contains Duplicate",
+      "model_results": {},
+      "best_overall": ""
+    },
+    {
+      "problem_id": "single-number",
+      "problem_title": "Single Number",
+      "model_results": {},
+      "best_overall": ""
+    },
+    {
+      "problem_id": "move-zeroes",
+      "problem_title": "Move Zeroes",
+      "model_results": {},
+      "best_overall": ""
+    }
+  ],
+  "summary": {
+    "gemini-2.5-flash-lite": {
+      "problems": 0,
+      "avg_pass_rate": 0,
+      "avg_algo_score": 0,
+      "avg_step_score": 0,
+      "avg_combined": 0,
+      "wins": 0
+    },
+    "gpt-4o-mini": {
+      "problems": 0,
+      "avg_pass_rate": 0,
+      "avg_algo_score": 0,
+      "avg_step_score": 0,
+      "avg_combined": 0,
+      "wins": 0
+    }
+  }
+}

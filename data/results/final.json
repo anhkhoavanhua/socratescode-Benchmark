@@ -1,0 +1,412 @@
+{
+  "config": {
+    "test_models": [
+      "gemini-2.5-flash-lite"
+    ],
+    "judge_model": "gemini-flash",
+    "num_problems": 3,
+    "execution_weight": 0.4,
+    "algorithm_weight": 0.35,
+    "step_quality_weight": 0.25,
+    "code_timeout_seconds": 10,
+    "output_dir": "data/results",
+    "save_raw_responses": true
+  },
+  "timestamp": "2025-12-04T23:20:29.159574",
+  "results": [
+    {
+      "problem_id": "two-sum",
+      "problem_title": "Two Sum",
+      "model_results": {
+        "gemini-2.5-flash-lite": {
+          "problem_id": "two-sum",
+          "model_name": "gemini-2.5-flash-lite",
+          "execution": {
+            "problem_id": "two-sum",
+            "model_name": "gemini-2.5-flash-lite",
+            "total_tests": 3,
+            "passed_tests": 3,
+            "pass_rate": 1.0,
+            "test_results": [
+              {
+                "test_id": 1,
+                "input": "[[2, 7, 11, 15], 9]",
+                "expected": "[0, 1]",
+                "actual": "[0, 1]",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 2,
+                "input": "[[3, 2, 4], 6]",
+                "expected": "[1, 2]",
+                "actual": "[1, 2]",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 3,
+                "input": "[[3, 3], 6]",
+                "expected": "[0, 1]",
+                "actual": "[0, 1]",
+                "passed": true,
+                "error": null
+              }
+            ],
+            "total_runtime_ms": 49.2854118347168,
+            "has_syntax_error": false,
+            "has_runtime_error": false
+          },
+          "algorithm_eval": {
+            "problem_id": "two-sum",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "optimality_score": 3,
+            "appropriateness_score": 4,
+            "justification_score": 3,
+            "overall_score": 3.3,
+            "feedback": "The AI correctly identifies the hash map approach as optimal and explains why brute-force and sorting approaches are less efficient. However, it fails to state the time and space complexity of its own proposed algorithm, which is a critical omission for an \"expert algorithm evaluator.\" The justification for why the hash map is the best approach is incomplete as it cuts off before fully explaining the sorting approach. The scores reflect these shortcomings."
+          },
+          "reasoning_eval": {
+            "problem_id": "two-sum",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "step_evaluations": [
+              {
+                "step_number": 1,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None"
+              },
+              {
+                "step_number": 2,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "Completeness: While it correctly identifies the hash map as the best approach and explains why brute-force is worse, it could briefly mention other potential approaches (e.g., sorting and two pointers) and why the hash map is still preferred for this specific problem (e.g., preserving original indices without extra steps)."
+              },
+              {
+                "step_number": 3,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "Completeness: The step is cut off mid-sentence. It should complete the thought about checking if the complement exists in the map and what to do if it does or doesn't."
+              },
+              {
+                "step_number": 4,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "Completeness: The explanation for duplicate numbers is cut off. It should fully describe how the hash map handles duplicates and what happens in the example `nums = [3, 3], target = 6`."
+              },
+              {
+                "step_number": 5,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "Completeness: The docstring for the `twoSum` method is cut off. It should be fully written out."
+              },
+              {
+                "step_number": 6,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "None"
+              }
+            ],
+            "avg_correctness": 5.0,
+            "avg_clarity": 5.0,
+            "avg_completeness": 4.33,
+            "avg_logical_flow": 5.0,
+            "overall_score": 4.8
+          },
+          "combined_score": 87.1
+        }
+      },
+      "best_overall": "gemini-2.5-flash-lite"
+    },
+    {
+      "problem_id": "valid-parentheses",
+      "problem_title": "Valid Parentheses",
+      "model_results": {
+        "gemini-2.5-flash-lite": {
+          "problem_id": "valid-parentheses",
+          "model_name": "gemini-2.5-flash-lite",
+          "execution": {
+            "problem_id": "valid-parentheses",
+            "model_name": "gemini-2.5-flash-lite",
+            "total_tests": 3,
+            "passed_tests": 3,
+            "pass_rate": 1.0,
+            "test_results": [
+              {
+                "test_id": 1,
+                "input": "[\"()\"]",
+                "expected": "True",
+                "actual": "True",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 2,
+                "input": "[\"()[]{}\"]",
+                "expected": "True",
+                "actual": "True",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 3,
+                "input": "[\"(]\"]",
+                "expected": "False",
+                "actual": "False",
+                "passed": true,
+                "error": null
+              }
+            ],
+            "total_runtime_ms": 49.44944381713867,
+            "has_syntax_error": false,
+            "has_runtime_error": false
+          },
+          "algorithm_eval": {
+            "problem_id": "valid-parentheses",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "optimality_score": 2,
+            "appropriateness_score": 5,
+            "justification_score": 3,
+            "overall_score": 3.3,
+            "feedback": "The AI correctly identifies the stack-based approach as appropriate and well-suited for this problem. However, it fails to determine the time and space complexity, which is a crucial aspect of evaluating an algorithm's optimality. The explanation of the approach is good but could be more detailed regarding the edge cases (e.g., empty string, string with only closing brackets)."
+          },
+          "reasoning_eval": {
+            "problem_id": "valid-parentheses",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "step_evaluations": [
+              {
+                "step_number": 1,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.75,
+                "issues": "The edge case for an empty string is mentioned but then contradicted by the constraint. While it's good to consider, it's slightly confusing given the explicit constraint."
+              },
+              {
+                "step_number": 2,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The reasoning for using a stack is clear and directly addresses the LIFO nature of bracket matching."
+              },
+              {
+                "step_number": 3,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The implementation strategy is well-defined and covers the essential components of the algorithm."
+              },
+              {
+                "step_number": 4,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "Handles the empty string case (even if excluded by constraints) and the boundary condition of only opening brackets, which is good."
+              },
+              {
+                "step_number": 5,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 4,
+                "completeness": 4,
+                "logical_flow": 5,
+                "step_score": 4.5,
+                "issues": "The code snippet is incomplete. It cuts off mid-line. While the logic shown is correct, the lack of completion prevents a full evaluation of this step."
+              },
+              {
+                "step_number": 6,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": "The complexity analysis is accurate and well-explained."
+              }
+            ],
+            "avg_correctness": 5.0,
+            "avg_clarity": 4.83,
+            "avg_completeness": 4.67,
+            "avg_logical_flow": 5.0,
+            "overall_score": 4.83
+          },
+          "combined_score": 87.25
+        }
+      },
+      "best_overall": "gemini-2.5-flash-lite"
+    },
+    {
+      "problem_id": "maximum-subarray",
+      "problem_title": "Maximum Subarray",
+      "model_results": {
+        "gemini-2.5-flash-lite": {
+          "problem_id": "maximum-subarray",
+          "model_name": "gemini-2.5-flash-lite",
+          "execution": {
+            "problem_id": "maximum-subarray",
+            "model_name": "gemini-2.5-flash-lite",
+            "total_tests": 3,
+            "passed_tests": 3,
+            "pass_rate": 1.0,
+            "test_results": [
+              {
+                "test_id": 1,
+                "input": "[[-2,1,-3,4,-1,2,1,-5,4]]",
+                "expected": "6",
+                "actual": "6",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 2,
+                "input": "[[1]]",
+                "expected": "1",
+                "actual": "1",
+                "passed": true,
+                "error": null
+              },
+              {
+                "test_id": 3,
+                "input": "[[5,4,-1,7,8]]",
+                "expected": "23",
+                "actual": "23",
+                "passed": true,
+                "error": null
+              }
+            ],
+            "total_runtime_ms": 58.30025672912598,
+            "has_syntax_error": false,
+            "has_runtime_error": false
+          },
+          "algorithm_eval": {
+            "problem_id": "maximum-subarray",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "optimality_score": 5,
+            "appropriateness_score": 5,
+            "justification_score": 4,
+            "overall_score": 4.7,
+            "feedback": "The AI correctly identifies Kadane's algorithm as the optimal solution and explains its time and space complexity. However, the description of the AI's algorithm is incomplete, cutting off before fully detailing the space complexity and the algorithm itself. The justification is good but could be more thorough by briefly explaining the core logic of Kadane's algorithm (e.g., 'current_max = max(num, current_max + num)')."
+          },
+          "reasoning_eval": {
+            "problem_id": "maximum-subarray",
+            "model_name": "Gemini 2.5 Flash Lite",
+            "step_evaluations": [
+              {
+                "step_number": 1,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": ""
+              },
+              {
+                "step_number": 2,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": ""
+              },
+              {
+                "step_number": 3,
+                "step_title": "",
+                "correctness": 4,
+                "clarity": 4,
+                "completeness": 3,
+                "logical_flow": 4,
+                "step_score": 3.75,
+                "issues": "Step 3 is incomplete. It stops mid-sentence and does not fully describe the logic within the loop. Specifically, it doesn't mention how `current_max` and `max_so_far` are updated based on the current element."
+              },
+              {
+                "step_number": 4,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": ""
+              },
+              {
+                "step_number": 5,
+                "step_title": "",
+                "correctness": 2,
+                "clarity": 3,
+                "completeness": 2,
+                "logical_flow": 2,
+                "step_score": 2.25,
+                "issues": "The code implementation is incomplete and contains a critical error. The line `num = num` is a no-op and doesn't use the current element from the loop. The core logic for updating `current_max` and `max_so_far` is missing. The `if not nums` check, while good practice, contradicts the problem constraints and might be confusing in this context."
+              },
+              {
+                "step_number": 6,
+                "step_title": "",
+                "correctness": 5,
+                "clarity": 5,
+                "completeness": 5,
+                "logical_flow": 5,
+                "step_score": 5.0,
+                "issues": ""
+              }
+            ],
+            "avg_correctness": 4.33,
+            "avg_clarity": 4.5,
+            "avg_completeness": 4.17,
+            "avg_logical_flow": 4.33,
+            "overall_score": 4.0
+          },
+          "combined_score": 92.9
+        }
+      },
+      "best_overall": "gemini-2.5-flash-lite"
+    }
+  ],
+  "summary": {
+    "gemini-2.5-flash-lite": {
+      "problems": 3,
+      "avg_pass_rate": 1.0,
+      "avg_algo_score": 3.77,
+      "avg_step_score": 4.54,
+      "avg_combined": 89.08,
+      "wins": 3
+    }
+  }
+}
