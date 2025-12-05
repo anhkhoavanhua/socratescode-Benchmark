@@ -1,0 +1,517 @@
+model,problem_id,problem_name,timestamp,correctness_passed,correctness_pass_rate,tests_passed,tests_total,syntax_error,runtime_error,avg_runtime_ms,peak_memory_kb,runtime_score,memory_score,efficiency_score,time_complexity,space_complexity,overall_score,needs_human_validation,ai_response,extracted_code,api_latency_ms
+gemini,1,Two Sum,2025-11-27T10:12:19.705959,True,1.0,3,3,,,0.026533341345687706,25.5341796875,99.77888882211927,97.87215169270833,99.01619397035489,O(2^n) or O(n!),O(n),99.60647758814196,False,"```python
+def twoSum(nums: list[int], target: int) -> list[int]:
+    """"""
+    Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+    You may assume that each input would have exactly one solution, and you may not use the same element twice.
+    You can return the answer in any order.
+
+    Example:
+    ----------
+    twoSum([2,7,11,15], 9) == [0,1]
+    twoSum([3,2,4], 6) == [1,2]
+    twoSum([3,3], 6) == [0,1]
+    """"""
+    num_map = {}
+    for index, num in enumerate(nums):
+        complement = target - num
+        if complement in num_map:
+            return [num_map[complement], index]
+        num_map[num] = index
+```","def twoSum(nums: list[int], target: int) -> list[int]:
+    """"""
+    Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+    You may assume that each input would have exactly one solution, and you may not use the same element twice.
+    You can return the answer in any order.
+
+    Example:
+    ----------
+    twoSum([2,7,11,15], 9) == [0,1]
+    twoSum([3,2,4], 6) == [1,2]
+    twoSum([3,3], 6) == [0,1]
+    """"""
+    num_map = {}
+    for index, num in enumerate(nums):
+        complement = target - num
+        if complement in num_map:
+            return [num_map[complement], index]
+        num_map[num] = index",1865.8024999895133
+gpt,1,Two Sum,2025-11-27T10:12:24.130271,True,1.0,3,3,,,0.026806676760315895,25.5341796875,99.77661102699737,97.87215169270833,99.01482729328175,O(1),O(n),99.6059309173127,False,"```python
+def twoSum(nums, target):
+    num_to_index = {}
+    
+    for index, num in enumerate(nums):
+        complement = target - num
+        if complement in num_to_index:
+            return [num_to_index[complement], index]
+        num_to_index[num] = index
+    
+    return []
+```","def twoSum(nums, target):
+    num_to_index = {}
+    
+    for index, num in enumerate(nums):
+        complement = target - num
+        if complement in num_to_index:
+            return [num_to_index[complement], index]
+        num_to_index[num] = index
+    
+    return []",2509.9395000142977
+gemini,20,Valid Parentheses,2025-11-27T10:12:27.400078,True,1.0,5,5,,,0.01997599843889475,25.537109375,99.83353334634255,97.87190755208333,99.04888302863887,O(n),O(n),99.61955321145555,False,"```python
+def isValid(s: str) -> bool:
+    """"""
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    Every close bracket has a corresponding open bracket of the same type.
+    """"""
+    stack = []
+    mapping = {"")"": ""("", ""}"": ""{"", ""]"": ""[""}
+
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else '#'
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+
+    return not stack
+```","def isValid(s: str) -> bool:
+    """"""
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    Every close bracket has a corresponding open bracket of the same type.
+    """"""
+    stack = []
+    mapping = {"")"": ""("", ""}"": ""{"", ""]"": ""[""}
+
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else '#'
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+
+    return not stack",1691.997999965679
+gpt,20,Valid Parentheses,2025-11-27T10:12:31.614993,True,1.0,5,5,,,0.018595994915813208,25.537109375,99.84503337570156,97.87190755208333,99.05578304625428,O(n),O(n),99.62231321850172,False,"```python
+def isValid(s: str) -> bool:
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else '#'
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack
+```","def isValid(s: str) -> bool:
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else '#'
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack",2640.667899977416
+gemini,21,Merge Two Sorted Lists,2025-11-27T10:12:34.103808,False,0.0,0,3,,,0,0,0,0,0,N/A,N/A,0.0,True,"```python
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        """"""
+        Merges two sorted linked lists.
+
+        Args:
+            list1: The head of the first sorted linked list.
+            list2: The head of the second sorted linked list.
+
+        Returns:
+            The head of the merged sorted linked list.
+        """"""
+        dummy = ListNode()
+        tail = dummy
+
+        while list1 and list2:
+            if list1.val <= list2.val:
+                tail.next = list1
+                list1 = list1.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
+
+        if list1:
+            tail.next = list1
+        elif list2:
+            tail.next = list2
+
+        return dummy.next
+```","# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        """"""
+        Merges two sorted linked lists.
+
+        Args:
+            list1: The head of the first sorted linked list.
+            list2: The head of the second sorted linked list.
+
+        Returns:
+            The head of the merged sorted linked list.
+        """"""
+        dummy = ListNode()
+        tail = dummy
+
+        while list1 and list2:
+            if list1.val <= list2.val:
+                tail.next = list1
+                list1 = list1.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
+
+        if list1:
+            tail.next = list1
+        elif list2:
+            tail.next = list2
+
+        return dummy.next",2134.051000000909
+gpt,21,Merge Two Sorted Lists,2025-11-27T10:12:39.705941,True,1.0,3,3,,,0.018773328823347885,25.5546875,99.84355559313877,97.87044270833333,99.05431043921661,O(1),O(1),99.62172417568664,False,"```python
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
+    # Create a dummy node to simplify the merge process
+    dummy = ListNode()
+    current = dummy
+    
+    # Traverse both lists and append the smaller value to the merged list
+    while l1 and l2:
+        if l1.val < l2.val:
+            current.next = l1
+            l1 = l1.next
+        else:
+            current.next = l2
+            l2 = l2.next
+        current = current.next
+    
+    # If there are remaining nodes in either list, append them
+    if l1:
+        current.next = l1
+    elif l2:
+        current.next = l2
+    
+    # The merged list starts from the next of the dummy node
+    return dummy.next
+```","class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def mergeTwoLists(l1: ListNode, l2: ListNode) -> ListNode:
+    # Create a dummy node to simplify the merge process
+    dummy = ListNode()
+    current = dummy
+    
+    # Traverse both lists and append the smaller value to the merged list
+    while l1 and l2:
+        if l1.val < l2.val:
+            current.next = l1
+            l1 = l1.next
+        else:
+            current.next = l2
+            l2 = l2.next
+        current = current.next
+    
+    # If there are remaining nodes in either list, append them
+    if l1:
+        current.next = l1
+    elif l2:
+        current.next = l2
+    
+    # The merged list starts from the next of the dummy node
+    return dummy.next",4660.653800005093
+gemini,15,3Sum,2025-11-27T10:12:42.921160,True,1.0,3,3,,,0.01997333796073993,25.5400390625,99.83355551699384,97.87166341145833,99.04879867477965,O(n log n),O(1),99.61951946991186,False,"```python
+from typing import List
+
+def threeSum(nums: List[int]) -> List[List[int]]:
+    """"""
+    Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
+    such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+    """"""
+    nums.sort()
+    result = []
+    n = len(nums)
+
+    for i in range(n - 2):
+        # Skip duplicate elements for the first number
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+
+        left = i + 1
+        right = n - 1
+
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+
+            if total == 0:
+                result.append([nums[i], nums[left], nums[right]])
+
+                # Skip duplicate elements for the second and third numbers
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+
+                left += 1
+                right -= 1
+            elif total < 0:
+                left += 1
+            else:
+                right -= 1
+
+    return result
+```","from typing import List
+
+def threeSum(nums: List[int]) -> List[List[int]]:
+    """"""
+    Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
+    such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+    """"""
+    nums.sort()
+    result = []
+    n = len(nums)
+
+    for i in range(n - 2):
+        # Skip duplicate elements for the first number
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+
+        left = i + 1
+        right = n - 1
+
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+
+            if total == 0:
+                result.append([nums[i], nums[left], nums[right]])
+
+                # Skip duplicate elements for the second and third numbers
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+
+                left += 1
+                right -= 1
+            elif total < 0:
+                left += 1
+            else:
+                right -= 1
+
+    return result",2242.357999959495
+gpt,15,3Sum,2025-11-27T10:12:49.618777,True,1.0,3,3,,,0.021053338423371315,25.5400390625,99.82455551313858,97.87166341145833,99.04339867246648,O(n log n),O(n),99.61735946898659,False,"Here is a clean and efficient solution for the 3Sum problem:
+
+```python
+from typing import List
+
+def threeSum(nums: List[int]) -> List[List[int]]:
+    nums.sort()  # Sort the array to make it easier to avoid duplicates
+    result = []
+    
+    for i in range(len(nums) - 2):
+        # Skip the same element to avoid duplicates
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+            
+        left, right = i + 1, len(nums) - 1
+        
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            if total < 0:
+                left += 1
+            elif total > 0:
+                right -= 1
+            else:
+                result.append([nums[i], nums[left], nums[right]])
+                
+                # Skip duplicates for left and right
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                
+                left += 1
+                right -= 1
+    
+    return result
+```
+
+This solution sorts the input list and uses a two-pointer technique to find the triplets that sum to zero while avoiding duplicates. The overall time complexity is O(n^2), which is efficient for this problem.","from typing import List
+
+def threeSum(nums: List[int]) -> List[List[int]]:
+    nums.sort()  # Sort the array to make it easier to avoid duplicates
+    result = []
+    
+    for i in range(len(nums) - 2):
+        # Skip the same element to avoid duplicates
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+            
+        left, right = i + 1, len(nums) - 1
+        
+        while left < right:
+            total = nums[i] + nums[left] + nums[right]
+            if total < 0:
+                left += 1
+            elif total > 0:
+                right -= 1
+            else:
+                result.append([nums[i], nums[left], nums[right]])
+                
+                # Skip duplicates for left and right
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right - 1]:
+                    right -= 1
+                
+                left += 1
+                right -= 1
+    
+    return result",5689.65620000381
+gemini,5,Longest Palindromic Substring,2025-11-27T10:12:52.609140,True,1.0,3,3,,,0.01990000018849969,25.56640625,99.83416666509584,97.86946614583333,99.04828645739084,O(n²),O(n²),99.61931458295635,False,"```python
+def longestPalindrome(s: str) -> str:
+    """"""
+    Given a string s, return the longest palindromic substring in s.
+    """"""
+    if not s:
+        return """"
+
+    n = len(s)
+    dp = [[False] * n for _ in range(n)]
+    start = 0
+    max_len = 1
+
+    for i in range(n):
+        dp[i][i] = True
+
+    for i in range(n - 1):
+        if s[i] == s[i + 1]:
+            dp[i][i + 1] = True
+            start = i
+            max_len = 2
+
+    for k in range(3, n + 1):
+        for i in range(n - k + 1):
+            j = i + k - 1
+            if s[i] == s[j] and dp[i + 1][j - 1]:
+                dp[i][j] = True
+                if k > max_len:
+                    start = i
+                    max_len = k
+
+    return s[start:start + max_len]
+```","def longestPalindrome(s: str) -> str:
+    """"""
+    Given a string s, return the longest palindromic substring in s.
+    """"""
+    if not s:
+        return """"
+
+    n = len(s)
+    dp = [[False] * n for _ in range(n)]
+    start = 0
+    max_len = 1
+
+    for i in range(n):
+        dp[i][i] = True
+
+    for i in range(n - 1):
+        if s[i] == s[i + 1]:
+            dp[i][i + 1] = True
+            start = i
+            max_len = 2
+
+    for k in range(3, n + 1):
+        for i in range(n - k + 1):
+            j = i + k - 1
+            if s[i] == s[j] and dp[i + 1][j - 1]:
+                dp[i][j] = True
+                if k > max_len:
+                    start = i
+                    max_len = k
+
+    return s[start:start + max_len]",2048.143199994229
+gpt,5,Longest Palindromic Substring,2025-11-27T10:12:58.197799,True,1.0,3,3,,,0.05886000581085682,25.56640625,99.50949995157619,97.86946614583333,98.85348642927904,O(2^n) or O(n!),O(n),99.54139457171162,False,"```python
+def longestPalindrome(s: str) -> str:
+    if not s:
+        return """"
+    
+    start, end = 0, 0
+    
+    for i in range(len(s)):
+        len1 = expandAroundCenter(s, i, i)    # Odd length palindromes
+        len2 = expandAroundCenter(s, i, i + 1)  # Even length palindromes
+        max_len = max(len1, len2)
+        
+        if max_len > end - start:
+            start = i - (max_len - 1) // 2
+            end = i + max_len // 2
+    
+    return s[start:end + 1]
+
+def expandAroundCenter(s: str, left: int, right: int) -> int:
+    while left >= 0 and right < len(s) and s[left] == s[right]:
+        left -= 1
+        right += 1
+    return right - left - 1
+```","def longestPalindrome(s: str) -> str:
+    if not s:
+        return """"
+    
+    start, end = 0, 0
+    
+    for i in range(len(s)):
+        len1 = expandAroundCenter(s, i, i)    # Odd length palindromes
+        len2 = expandAroundCenter(s, i, i + 1)  # Even length palindromes
+        max_len = max(len1, len2)
+        
+        if max_len > end - start:
+            start = i - (max_len - 1) // 2
+            end = i + max_len // 2
+    
+    return s[start:end + 1]
+
+def expandAroundCenter(s: str, left: int, right: int) -> int:
+    while left >= 0 and right < len(s) and s[left] == s[right]:
+        left -= 1
+        right += 1
+    return right - left - 1",4594.533899973612

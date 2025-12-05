@@ -15,3 +15,6 @@ analysis = [
     "matplotlib>=3.10.7",
     "pandas>=2.3.3",
 ]
+demo = [
+    "streamlit>=1.45.0",
+]

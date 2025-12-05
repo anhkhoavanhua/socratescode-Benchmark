@@ -1,0 +1,222 @@
+model,problem_id,problem_name,timestamp,correctness_passed,correctness_pass_rate,tests_passed,tests_total,syntax_error,runtime_error,avg_runtime_ms,peak_memory_kb,runtime_score,memory_score,efficiency_score,time_complexity,space_complexity,overall_score,needs_human_validation,ai_response,extracted_code,api_latency_ms
+gemini,1,Two Sum,2025-11-26T23:07:07.744155,True,1.0,3,3,,,0.02430113333333252,11.0673828125,99.79749055555556,99.07771809895833,99.50958157291666,O(1),O(n),99.80383262916666,False,"```python
+def twoSum(nums, target):
+    """"""
+    Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """"""
+    num_map = {}
+    for index, num in enumerate(nums):
+        complement = target - num
+        if complement in num_map:
+            return [num_map[complement], index]
+        num_map[num] = index
+    return []
+```","def twoSum(nums, target):
+    """"""
+    Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+    :type nums: List[int]
+    :type target: int
+    :rtype: List[int]
+    """"""
+    num_map = {}
+    for index, num in enumerate(nums):
+        complement = target - num
+        if complement in num_map:
+            return [num_map[complement], index]
+        num_map[num] = index
+    return []",1672.5092249999998
+gemini,20,Valid Parentheses,2025-11-26T23:07:13.403199,True,1.0,5,5,,,0.030626280000000533,11.130859375,99.74478099999999,99.07242838541667,99.47583995416667,O(n),O(n),99.79033598166667,False,"```python
+def isValid(s: str) -> bool:
+    """"""
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    Every close bracket has a corresponding open bracket of the same type.
+    """"""
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else '#'
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+
+    return not stack
+```","def isValid(s: str) -> bool:
+    """"""
+    Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+    An input string is valid if:
+
+    Open brackets must be closed by the same type of brackets.
+    Open brackets must be closed in the correct order.
+    Every close bracket has a corresponding open bracket of the same type.
+    """"""
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+
+    for char in s:
+        if char in map",1987.610967
+gemini,21,Merge Two Sorted Lists,2025-11-26T23:07:17.560535,False,0.0,0,3,,,0,0,0,0,0,N/A,N/A,0.0,True,"```python
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+        """"""Merges two sorted linked lists.
+
+        Args:
+            list1: The head of the first sorted linked list.
+            list2: The head of the second sorted linked list.
+
+        Returns:
+            The head of the merged sorted linked list.
+        """"""
+        dummy = ListNode()
+        tail = dummy
+
+        while list1 and list2:
+            if list1.val <= list2.val:
+                tail.next = list1
+                list1 = list1.next
+            else:
+                tail.next = list2
+                list2 = list2.next
+            tail = tail.next
+
+        if list1:
+            tail.next = list1
+        elif list2:
+            tail.next = list2
+
+        return dummy.next
+```","# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def mergeTwoLists(self, list1: ListNode, list2: ListNode) -> ListNode:
+        """"""Merges two sorted linked lists.
+
+        Args:
+            list1: The head of the first sorted linked list.
+            list2: The head of the second sorted linked list.
+
+        Returns:
+            The head of the merged sorted linked list.
+        """"""",2360.0312359999994
+gemini,15,3Sum,2025-11-26T23:07:23.511515,True,1.0,3,3,,,0.0291952666666676,11.1787109375,99.7567061111111,99.06844075520833,99.48139996875,O(n log n),O(1),99.7925599875,False,"```python
+def threeSum(nums: list[int]) -> list[list[int]]:
+    """"""
+    Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+    Args:
+        nums (list[int]): An integer array.
+
+    Returns:
+        list[list[int]]: A list of triplets that sum to 0.
+    """"""
+    nums.sort()
+    result = []
+    n = len(nums)
+
+    for i in range(n - 2):
+        # Skip duplicate values for the first number
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+
+        left = i + 1
+        right = n - 1
+
+        while left < right:
+            current_sum = nums[i] + nums[left] + nums[right]
+
+            if current_sum == 0:
+                result.append([nums[i], nums[left], nums[right]])
+
+                # Skip duplicate values for the second number
+                while left < right and nums[left] == nums[left + 1]:
+                    left += 1
+
+                # Skip duplicate values f","def threeSum(nums: list[int]) -> list[list[int]]:
+    """"""
+    Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+    Args:
+        nums (list[int]): An integer array.
+
+    Returns:
+        list[list[int]]: A list of triplets that sum to 0.
+    """"""
+    nums.sort()
+    result = []
+    n = len(nums)
+
+    for i in range(n - 2):
+        # Skip duplicate values for the first number
+        if i >",3694.188219000001
+gemini,5,Longest Palindromic Substring,2025-11-26T23:07:27.619932,True,1.0,3,3,,,0.027760266666665884,11.140625,99.76866444444445,99.07161458333333,99.4898445,O(2^n) or O(n!),O(n),99.7959378,False,"```python
+def longestPalindrome(s: str) -> str:
+    """"""
+    Given a string s, return the longest palindromic substring in s.
+    """"""
+    if not s:
+        return """"
+
+    n = len(s)
+    longest = """"
+
+    def expand_around_center(left, right):
+        while left >= 0 and right < n and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return s[left + 1:right]
+
+    for i in range(n):
+        # Odd length palindromes
+        palindrome1 = expand_around_center(i, i)
+        if len(palindrome1) > len(longest):
+            longest = palindrome1
+
+        # Even length palindromes
+        palindrome2 = expand_around_center(i, i + 1)
+        if len(palindrome2) > len(longest):
+            longest = palindrome2
+
+    return longest
+```","def longestPalindrome(s: str) -> str:
+    """"""
+    Given a string s, return the longest palindromic substring in s.
+    """"""
+    if not s:
+        return """"
+
+    n = len(s)
+    longest = """"
+
+    def expand_around_center(left, right):
+        while left >= 0 and right < n and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return s[left + 1:right]
+
+    for i in range(n):
+        # Odd length palindromes
+        palindrome1 = expand_around_center(i, i)
+        if len(palind",2118.1612239999977
